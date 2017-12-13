@@ -196,6 +196,15 @@ class nsqphp
         }
     }
     
+
+    /** 
+    * Get current event loop for bind another commands
+    */
+    public function getLoop() {
+        return $this->loop;
+    }
+
+    
     /**
      * Define nsqd hosts to publish to
      * 
