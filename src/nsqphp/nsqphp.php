@@ -144,6 +144,7 @@ class nsqphp
             DedupeInterface $dedupe = NULL,
             RequeueStrategyInterface $requeueStrategy = NULL,
             LoggerInterface $logger = NULL,
+            ELFactory $loop,
             $connectionTimeout = 3,
             $readWriteTimeout = 3,
             $readWaitTimeout = 15
@@ -161,7 +162,10 @@ class nsqphp
         
         $this->subConnectionPool = new Connection\ConnectionPool;
         
-        $this->loop = ELFactory::create();
+        // allow to bridge async web server with same event lop
+        if (!$loop) {
+            $this->loop = ELFactory::create();
+        }
         
         $this->reader = new Wire\Reader;
         $this->writer = new Wire\Writer;
