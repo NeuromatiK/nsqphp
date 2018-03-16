@@ -5,7 +5,7 @@ namespace nsqphp;
 use nsqphp\Exception\SocketException;
 use React\EventLoop\LoopInterface;
 use React\EventLoop\Factory as ELFactory;
-
+use React\EventLoop\StreamSelectLoop;
 use nsqphp\Logger\LoggerInterface;
 use nsqphp\Lookup\LookupInterface;
 use nsqphp\Connection\ConnectionInterface;
@@ -144,7 +144,7 @@ class nsqphp
             DedupeInterface $dedupe = NULL,
             RequeueStrategyInterface $requeueStrategy = NULL,
             LoggerInterface $logger = NULL,
-            ELFactory $loop,
+            StreamSelectLoop $loop,
             $connectionTimeout = 3,
             $readWriteTimeout = 3,
             $readWaitTimeout = 15
