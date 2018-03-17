@@ -144,7 +144,7 @@ class nsqphp
             DedupeInterface $dedupe = NULL,
             RequeueStrategyInterface $requeueStrategy = NULL,
             LoggerInterface $logger = NULL,
-            StreamSelectLoop $loop,
+            StreamSelectLoop $loop = NULL,
             $connectionTimeout = 3,
             $readWriteTimeout = 3,
             $readWaitTimeout = 15
